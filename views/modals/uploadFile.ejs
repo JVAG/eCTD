@@ -1,0 +1,33 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal4" id="launch4" style="display:none;">
+  File Upload Modal Launch
+</button>
+<!-- Test Modal -->
+<div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="modalLabel4">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel4">Select File(s) to upload</h4>
+      </div>
+      <form action="/home/dossier/file/upload" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Input File:</label>
+            <input type="file" name="uploadInput" multiple="multiple" accept="application/pdf,image/jpeg"/>
+          </div>
+          <div class="form-group">
+            <label>Destinaton Path:</label>
+            <input type="text" name="targetPath" id="targetPath4" class="form-control" readonly/>
+          </div>
+          <input type="text" name="dossierPath" style="display:none;" value="<%= dossier.Path %>" />
+          <input type="text" name="dossierId" style="display:none;" value="<%= dossier._id %>" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary" value="Upload"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

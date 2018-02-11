@@ -1,0 +1,122 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <title>eCTD Utility - Dossier Details</title>
+    <link rel="stylesheet" href="/third_party/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <link rel="stylesheet" href="/css/dossier_details.css" />
+
+    <script src="/third_party/js/jquery-3.2.0.js"></script>
+    <script src="/third_party/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+    <script src="/js/dossierDetails.js"></script>
+
+    <link rel="shortcut icon" type="image/jpg" href="/images/logo.jpg" />
+  </head>
+  <body style="padding-top:70px;">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="nav navbar-nav navbar-left">
+              <a href="/home" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> All Dossiers
+              </a>
+              <button class="btn btn-info navbar-btn">
+                Sequence View <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+              </button>
+              <button class="btn btn-info navbar-btn" id="show_edit">
+                  Toggle Dossier Data
+              </button>
+          </div>
+          <h4 class="navbar-text"><%= dossier.Title %></h4>
+          <div class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span style="font-size:large;">Validation</span> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" id="prepValidate" data-dossier="<%= JSON.stringify(dossier) %>" data-dossierid="<%= dossier._id%>">Validate</a></li>
+                <li><a href="#">Show Current Status</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/validate/dossier/<%= dossier._id %>/xml">View XML</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span style="font-size:large;">Admin</span> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/users">All Users List</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span style="font-size:large;"><%= user["First Name"] %></span> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/logout">Logout</a></li>
+                </ul>
+              </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div id="hiddenJSON" style="display:none;">
+          <%= JSON.stringify(dossier.Title) %>
+        </div>
+        <div class="col-sm-3">
+          <input id="search-input" class="form-control input-sm" placeholder="search files/folders"></input>
+          <div id="dossier_tree">
+          </div>
+        </div>
+        <div class="col-sm-6" id="pdf_container">
+          <embed width="100%" height="800px" type="application/pdf" id="currentPdf"/>
+        </div>
+        <div class="col-sm-3 edit_form">
+            <% for(var key in dossier ) { if(key!='_id' && key!='Title' && key!='Path' && key!='Sequences' && key!='Status') { %>
+              <div>
+                <strong> <%= key %>: </strong>
+                <% if(key=='Onwer' || key=='Last Modified By' ) { %>
+                  <span><%= dossier[key]["First Name"]+' ' + dossier[key]["Last Name"] %></span>
+                <% } else if(key=='Creation Date' || key=='Due Date' ) { %>
+                    <span><%= new Date(dossier[key]).toDateString() %></span>
+                <% } else if( key=='Last Modified On' ) { %>
+                      <span><%= new Date(dossier[key]).toLocaleString() %></span>
+                <% } else if(key=='Drug Substance') { %>
+                  <div class="drug_substance">
+                      <% for(var ds of dossier[key]) { %>
+                        <div>
+                          <p><strong>Name:</strong> <%= ds.Name %></p>
+                          <p><strong>Manufacturer:</strong> <%= ds.Manufacturer %></p>
+                          <p><strong>Folder Name:</strong> <%= ds.Folder %></p>
+                        </div>
+                      <% } %>
+                  </div>
+                <% } else { %>
+                  <span><%= dossier[key] %></span>
+                <% } %>
+              </div>
+            <% } } %>
+            <div>
+              <a href="/update/dossier/<%= dossier._id %>" class="btn btn-block btn-warning">Edit</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%- include('modals/delete.ejs') %>
+    </div>
+    <div>
+      <%- include('modals/rename.ejs') %>
+    </div>
+    <div>
+      <%- include('modals/newFolder.ejs') %>
+    </div>
+    <div>
+      <%- include('modals/uploadFile.ejs') %>
+    </div>
+  </body>
+</html>

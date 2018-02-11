@@ -1,0 +1,11 @@
+.container-fluid{
+    width: 80%;
+}
+
+.drugSubstance {
+   padding-bottom:20px;
+}
+
+.drugSubstance > .btn{
+    margin-left: 5px;
+}
