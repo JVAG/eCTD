@@ -1,0 +1,72 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <title>eCTD Utility - Home</title>
+    <link rel="stylesheet" href="/third_party/css/bootstrap.min.css" />
+    <script src="/third_party/js/jquery-3.2.0.js"></script>
+    <script src="/third_party/js/bootstrap.min.js"></script>
+
+    <script src="/js/main.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="/images/logo.jpg" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand"></span>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="nav navbar-nav navbar-left">
+              <a href="/home/dossiers/create" class="btn btn-default btn-sm navbar-btn">Create New Dossier</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Admin <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/users">All Users List</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <strong id="welcome"></strong> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a id="userProfileLink">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="col-md-12">
+          <h4 class="text-danger" style="display:none;" id="ErrorNoDossiers">No Dossiers Found</h4>
+          <div id="dossierTable">
+            <div class="row-fluid">
+              <div class="col-md-12 text-right"> <!--Dossier Search Form -->
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label for="searchInput">Search: </label>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search by Title">
+                  </div>
+                </form>
+              </div>
+            </div>
+            <table class="table table-condensed table-hover">
+              <thead>
+                <tr id="headRow">
+                </tr>
+              </thead>
+              <tbody id="rows">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

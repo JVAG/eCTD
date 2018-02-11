@@ -1,0 +1,83 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <title>eCTD Utility - Login</title>
+    <link rel="stylesheet" href="/third_party/css/bootstrap.min.css" />
+    <script src="/third_party/js/jquery-3.2.0.js"></script>
+    <script src="/third_party/js/bootstrap.min.js"></script>
+
+    <script src="/js/index.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="/images/logo.jpg" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <span class="navbar-brand">eCTD Utility for JVAG</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <!-- Login Form -->
+        <h3 class="text-success">Login</h3>
+        <h4 class="text-danger"> <%= err %> </h4>
+        <form action="/user/login" method="POST">
+          <div class="form-group">
+            <label>Email: </label>
+            <input type="email" name="email" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Password: </label>
+            <input type="password" name="password" class="form-control"/>
+          </div>
+
+          <input type="submit" value="Login" class="btn btn-primary"/>
+        </form>
+      </div>
+      <div class="col-md-4 col-md-offset-3 col-sm-5 col-sm-offset-3">
+        <!-- Registration Form -->
+          <h3 class="text-success">Add User</h3>
+          <div>
+            <ul id="errors" class="text-danger">
+            </ul>
+          </div>
+          <form id="register" action="/user/register" method="POST">
+            <div class="form-group">
+              <label><a href="#" data-toggle="tooltip" title="Email ID will NOT be used for any commuication">Email:</a></label>
+              <input type="email" id="email" name="email" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>First Name:</label>
+              <input type="text" id="firstName" name="firstName" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>Last Name:</label>
+              <input type="text" id="lastName" name="lastName" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>Password:</label>
+              <input type="password" id="password" name="password" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password:</label>
+              <input type="password" id="confirmPassword" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>User Role/Permission:</label>
+              <select class="form-control" name="userRole" id="userRole">
+                <option value="view">View</option>
+                <option value="edit">Correct/Edit</option>
+                <option value="review">Review</option>
+                <option value="publish">Print/Publish</option>
+              </select>
+            </div>
+            <input type="submit" value="Register" class="btn btn-primary"/>
+          </form>
+      </div>
+      <div class="col-md-4">
+      </div>
+  </div>
+  </body>
+</html>
