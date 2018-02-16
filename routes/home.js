@@ -10,7 +10,7 @@ var util = require('util');
 var dossiers = require('./dossiers');
 
 const BASE_PATH_MAC = '/Users/snehalindurkar/Desktop/Project eCTD/Dossiers';
-const BASE_PATH_WIN = 'F:/Dossiers/';
+const BASE_PATH_WIN = 'C:/eCTD/Dossiers/';
 const BASE_PATH = BASE_PATH_WIN;
 
 router.get('/',function(req,res) {
