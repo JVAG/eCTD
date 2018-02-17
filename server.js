@@ -66,4 +66,5 @@ var server = app.listen(8081, function(){
   let host = server.address().address;
   let port = server.address().port;
   console.log('eCTD app running at http://' + host + ':' + port);
+  console.log('this one is real');
 });
