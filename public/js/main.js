@@ -1,11 +1,3 @@
-(function($) {
-    $(function() {
-        $('.update').live('change', function() {
-            formObject.run($(this));
-        });
-    });
-})(jQuery);
-
 $(function() {
   $.get('/home/dossiers',function(data) {
     if(data.user){

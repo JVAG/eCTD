@@ -12,13 +12,16 @@
 
     <link rel="shortcut icon" type="image/jpg" href="/images/logo.jpg" />
   </head>
-  <body>
-    <nav class="navbar navbar-inverse">
+  <body style="padding-top:70px;">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <div class="nav navbar-nav navbar-left">
+              <a href="/home" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+              </a>
             <a href="/home/dossiers/id/<%= dossier._id%>" class="btn btn-default btn-sm navbar-btn">
-              <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Dossier Details
+              <span class="glyphicon glyphicon" aria-hidden="true"></span> Dossier Details
             </a>
           </div>
           <h3 class="navbar-text">Edit Dossier</h3>

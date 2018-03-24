@@ -10,12 +10,12 @@ var folderMapLoader = require('./folderMapLoader.js');
 var foldermap = null;
 
 const BASE_PATH_MAC = '/Users/snehalindurkar/Desktop/Project eCTD/Dossiers';
-const BASE_PATH_WIN = 'F:/Dossiers/';
-const BASE_PATH = BASE_PATH_MAC;
+const BASE_PATH_WIN = 'C:/Dossiers/';
+const BASE_PATH = BASE_PATH_WIN;
 
 const DTD_FILE_DEV = "file:///Users/snehalindurkar/Desktop/Project eCTD/Dossiers/test2/0000/util/dtd/ich-ectd-3-2.dtd";
 const DTD_FILE_PROD = "util/dtd/ich-ectd-3-2.dtd";
-const DTD_FILE = DTD_FILE_DEV;
+const DTD_FILE = DTD_FILE_PROD;
 
 router.post('/dossier/:id',function(req,res) {
   //   var drugSubsFolderPath = path.join(BASE_PATH, dossierTitle, 'm3/32-body-data/32s-drug-sub', folder);

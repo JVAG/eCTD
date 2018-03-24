@@ -1,16 +1,23 @@
 var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var user = require('./routes/user');
 var home = require('./routes/home');
 var validate = require('./routes/validate');
+var update = require('./routes/update');
+var index = require('./routes/index');
+
+var app = express();
+var DEV_MODE = true;
 
 // View Engine
-app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'views'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 // Create application/x-www-form-urlencoded parser
 app.use(bodyParser.json());
@@ -43,6 +50,7 @@ app.use(function(req,res,next ) {
 app.use('/user',user);
 app.use('/home',home);
 app.use('/validate',validate);
+app.use('/update',update);
 
 app.get('/', function(req,res){
   res.render('index',{
@@ -66,5 +74,4 @@ var server = app.listen(8081, function(){
   let host = server.address().address;
   let port = server.address().port;
   console.log('eCTD app running at http://' + host + ':' + port);
-  console.log('this one is real');
 });
