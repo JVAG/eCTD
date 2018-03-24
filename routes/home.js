@@ -9,9 +9,14 @@ var multiparty = require('multiparty');
 var util = require('util');
 var dossiers = require('./dossiers');
 
+
 const BASE_PATH_MAC = '/Users/snehalindurkar/Desktop/Project eCTD/Dossiers';
 const BASE_PATH_WIN = 'C:/Dossiers/';
-const BASE_PATH = BASE_PATH_WIN;
+let BASE_PATH = BASE_PATH_WIN;
+if(process.platform == 'darwin'){
+  BASE_PATH = BASE_PATH_MAC;
+}
+
 
 router.get('/',function(req,res) {
   let homePath = path.join(__dirname,'../views/home.html');

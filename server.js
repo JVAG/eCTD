@@ -1,3 +1,4 @@
+'use strict'
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -73,5 +74,8 @@ app.get('/test*',function(req,res){
 var server = app.listen(8081, function(){
   let host = server.address().address;
   let port = server.address().port;
+  if(host == '::'){
+    host  = 'localhost';
+  }
   console.log('eCTD app running at http://' + host + ':' + port);
 });
